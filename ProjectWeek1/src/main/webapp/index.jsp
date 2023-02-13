@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="d-flex justify-content-center mt-5">
-    <form method="POST" action="/calculator" id="form-calculator">
+    <form method="POST" action="<%=request.getContextPath()%>/calculator" id="form-calculator">
         <div class="calculator card">
 
             <input type="text" class="calculator-screen z-depth-1" value="${result == null ? 0 : result}" disabled />

@@ -18,28 +18,10 @@ public class Main extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect(req.getContextPath() + "/calculator?result=" + calculator(req, resp));
-    }
-    protected float calculator(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         float firstNumber = Float.parseFloat(req.getParameter("firstNumber"));
         float secondNumber = Float.parseFloat(req.getParameter("secondNumber"));
-        float result = 0;
         String operator = req.getParameter("operator");
-
-        switch (operator) {
-            case "+":
-                result = firstNumber + secondNumber;
-                break;
-            case "-":
-                result = firstNumber - secondNumber;
-                break;
-            case "*":
-                result = firstNumber * secondNumber;
-                break;
-            case "/":
-                result = firstNumber / secondNumber;
-        }
-
-        return result;
+        resp.sendRedirect(req.getContextPath() + "/calculator?result=" + Calculate.getResult(operator, firstNumber, secondNumber));
     }
+
 }
